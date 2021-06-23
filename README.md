@@ -4,7 +4,7 @@ This is the script for Edi Wang to setup a new dev box. You can modify the scrip
 
 ## Prerequisites
 
-- A clean install of Windows 10 Pro v2004 en-us or above.
+- A clean install of Windows 10 Home en-us or above.
 - If you are in China: a stable "Internet" connection.
 
 > This script has not been tested on other version of Windows, please be careful if you are using it on other Windows versions.
@@ -18,19 +18,7 @@ Download latest script here: https://raw.githubusercontent.com/EdiWang/EnvSetup/
 Import "Add_PS1_Run_as_administrator.reg" to your registry to enable context menu on the powershell files to run as Administrator.
 
 ### Run Install.ps1
-
-- Set a New Computer Name
-- Disable Sleep on AC Power
-- Add 'This PC' Desktop Icon (need refresh desktop)
-- Enable Developer Mode
-- Enable Remote Desktop
-- Install IIS
-  - ASP.NET 4.8
-  - Dynamic and Static Compression
-  - Basic Authentication
-  - Windows Authentication
-  - Server Side Includes
-  - WebSockets
+- Enable Remote Desktop ( will not work for home users)
 - Install Chocolate for Windows
     - 7-Zip
     - Microsoft Edge (Chromium)
