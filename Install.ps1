@@ -4,17 +4,6 @@ function Check-Command($cmdname) {
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
-# -----------------------------------------------------------------------------
-$computerName = Read-Host 'Enter New Computer Name'
-Write-Host "Renaming this computer to: " $computerName  -ForegroundColor Yellow
-Rename-Computer -NewName $computerName
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Disable Sleep on AC Power..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-Powercfg /Change monitor-timeout-ac 20
-Powercfg /Change standby-timeout-ac 0
-# -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Add 'This PC' Desktop Icon..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
@@ -48,24 +37,7 @@ $uwpRubbishApps = @(
 foreach ($uwp in $uwpRubbishApps) {
     Get-AppxPackage -Name $uwp | Remove-AppxPackage
 }
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Installing IIS..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-DefaultDocument -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionDynamic -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionStatic -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebSockets -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationInit -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ASPNET45 -All
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-ServerSideIncludes
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-BasicAuthentication
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WindowsAuthentication
-# -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Enable Windows 10 Developer Mode..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Enable Remote Desktop..." -ForegroundColor Green
@@ -95,27 +67,19 @@ $Apps = @(
     "microsoft-edge",
     "googlechrome",
     "vlc",
-    "dotnetcore-sdk",
-    "ffmpeg",
     "wget",
     "openssl.light",
     "vscode",
     "sysinternals",
     "notepadplusplus.install",
-    "linqpad",
     "fiddler",
     "postman",
-    "nuget.commandline",
-    "beyondcompare",
+    "python",
     "filezilla",
-    "microsoft-teams.install",
-    "motrix",
     "github-desktop",
     "irfanview",
     "nodejs-lts",
-    "azure-cli",
     "powershell-core",
-    "chocolateygui",
     "obs-studio")
 
 foreach ($app in $Apps) {
